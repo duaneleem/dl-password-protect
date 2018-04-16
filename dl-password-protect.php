@@ -10,15 +10,18 @@
   Text Domain: dl-password-protect
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
+// Exit if accessed directly.
+if (!defined('ABSPATH')) {
   exit; // Exit if accessed directly
 }
 
-// Active password protection.
+/**
+ * Active password protection.
+ */
 function dl_password_protected_init() {
   require_once("includes/class-dl-password-protect.php");
   DL_Password_Protected::init();
 }
-add_action( "template_redirect", "dl_password_protected_init");
+add_filter( "template_redirect", "dl_password_protected_init");
 
 ?>
